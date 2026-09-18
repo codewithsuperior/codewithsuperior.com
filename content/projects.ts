@@ -1,8 +1,6 @@
 import type { Project } from "@/lib/types";
 
 /* ---------------------------------------------------------------------------
- * PLACEHOLDER PROJECTS — replace with your own.
- *
  * Order matters: this is the order they appear in the gallery. `featured`
  * projects render as full-bleed alternating rows, the rest as a card grid.
  * A project with no `caseStudy` renders without a case-study link.
@@ -10,187 +8,55 @@ import type { Project } from "@/lib/types";
 
 export const projects: Project[] = [
   {
-    slug: "ledger-wallet",
-    name: "Ledger",
+    slug: "from-nobody-the-goat",
+    name: "From Nobody: The GOAT",
     summary:
-      "A mobile payments wallet built on a double-entry ledger, with idempotent transfers that stay balanced even when a provider drops the connection mid-request.",
-    kind: "mobile",
-    status: "live",
-    role: "Lead Full-Stack Engineer",
-    timeline: "Completed",
-    tech: [
-      "React Native",
-      "Expo",
-      "Node.js",
-      "PostgreSQL",
-      "Zustand",
-      "Fintech",
-    ],
-    featured: true,
-    cover: {
-      src: "/shots/ledger-1.svg",
-      alt: "Ledger wallet home screen showing an account balance and recent activity",
-    },
-    shots: [
-      {
-        src: "/shots/ledger-2.svg",
-        alt: "Ledger transfer screen with an amount keypad",
-      },
-      {
-        src: "/shots/ledger-3.svg",
-        alt: "Ledger transaction history grouped by day",
-      },
-    ],
-    totalScreens: 24,
-    caseStudy: {
-      overview:
-        "Ledger is a mobile-first payments wallet handling the full lifecycle of a transfer — funding, authorisation, settlement and reconciliation. The client is React Native on Expo; the backend is Node and PostgreSQL. Rather than storing a single mutable balance column, every movement of money is written as a pair of ledger entries, so an account balance is always a derived sum that cannot silently drift.",
-      challenges:
-        "The hard part was never the happy path — it was third-party providers timing out halfway through a transfer. I made the transaction engine idempotent: every request carries a client-generated key, and a replay returns the original result instead of moving money twice. Paired with a strict double-entry schema and database-level constraints, a dropped connection could no longer leave an account debited for a transfer that never completed.",
-      features: [
-        "Idempotent transfer engine keyed on client-supplied request IDs",
-        "Double-entry ledger with balance enforced by database constraints",
-        "Optimistic UI updates that reconcile against the server",
-        "Encrypted transaction PINs, never stored in plaintext",
-        "Automated reconciliation against provider webhooks",
-        "Offline-tolerant queue for transfers started without signal",
-      ],
-    },
-  },
-  {
-    slug: "atlas-commerce",
-    name: "Atlas",
-    summary:
-      "A storefront and admin dashboard for a small retailer, built to be run by people who do not work in tech.",
-    kind: "web",
-    status: "live",
-    role: "Full Stack Developer",
-    timeline: "Completed",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Tailwind"],
-    featured: true,
-    cover: {
-      src: "/shots/atlas-1.svg",
-      alt: "Atlas storefront homepage with a product grid",
-    },
-    shots: [
-      {
-        src: "/shots/atlas-2.svg",
-        alt: "Atlas admin dashboard showing orders and revenue",
-      },
-    ],
-    caseStudy: {
-      overview:
-        "Atlas is a complete commerce stack — catalogue, cart, checkout and an admin dashboard — built for a retailer with no technical staff. The brief was less about features than about handover: everything the owner might need to change had to be editable without a developer.",
-      challenges:
-        "Product data had to be flexible enough for wildly different item types without becoming a free-for-all. I settled on a typed variant model with per-category attribute schemas validated at the edge, so the admin UI could generate the right form for each category while the database still rejected malformed data.",
-      features: [
-        "Typed product variants with per-category attribute schemas",
-        "Stripe checkout with webhook-driven order state",
-        "Role-based admin with a full audit trail",
-        "Image pipeline producing responsive AVIF and WebP",
-        "Search with typo tolerance and faceted filtering",
-      ],
-    },
-  },
-  {
-    slug: "trailmark",
-    name: "Trailmark",
-    summary:
-      "An offline-first hiking tracker that records routes without a signal and syncs when you are back in range.",
+      "A football life sim where you start unattached in high school with no club, no agent and no reputation, and plan every week — training, work, people, rest — on the way to being the best in the world.",
     kind: "mobile",
     status: "in-progress",
     role: "Solo Developer",
-    timeline: "2025 — Present",
-    tech: ["React Native", "Expo", "SQLite", "MapLibre", "TypeScript"],
-    featured: false,
+    timeline: "2026 — Present",
+    tech: [
+      "Flutter",
+      "Dart",
+      "Android",
+      "Game Design",
+      "Simulation",
+      "Free-to-Play",
+      "Unit Testing",
+    ],
+    featured: true,
     cover: {
-      src: "/shots/trailmark-1.svg",
-      alt: "Trailmark route tracking screen with an elevation chart",
+      src: "/shots/goat-hero.jpg",
+      alt: "From Nobody: The GOAT key art — a footballer lit from behind under stadium floodlights",
     },
     shots: [
       {
-        src: "/shots/trailmark-2.svg",
-        alt: "Trailmark map view showing a recorded trail",
+        src: "/shots/goat-street.jpg",
+        alt: "Street football backdrop, where a career begins before any club has signed the player",
+      },
+      {
+        src: "/shots/goat-academy.jpg",
+        alt: "Academy backdrop, used for the youth stage of a player's rise",
+      },
+      {
+        src: "/shots/goat-world-cup.jpg",
+        alt: "World cup backdrop, the final stage of the reputation ladder",
       },
     ],
-    totalScreens: 12,
     caseStudy: {
       overview:
-        "Trailmark records GPS traces, elevation and pace on trails where there is no network at all. Everything is written to on-device SQLite first and treated as the source of truth; the server is a sync target, not a dependency.",
+        "A mobile-first, free-to-play career sim built in Flutter. A week is seven days and you decide what each one is for; matches play out across four live moments rather than a single dice roll; and every week nets your wage against what it costs to live, which means nothing at all when you are still a street footballer. Reputation carries you up seven stages, from unknown to the best in the world, and the cast around you — clubs, coaches, agents, family — is earned rather than handed over at the start. It runs to roughly 81,000 lines of Dart across 259 files, with 169 test files alongside them.",
       challenges:
-        "Background location on both platforms is unforgiving — aggressive OS power management will silently stop your task. I moved to a batched write strategy with a foreground service on Android and significant-change monitoring on iOS, then built a conflict-resolution pass so a trail edited on two devices merges rather than overwrites.",
+        "The hard part was not the football, it was making a long career survive its own save file. Early on, saves carried no format version, so old careers were held together by defaults and by bootstraps firing unawaited writes at the same slot. Randomness came from a single generator drawn in tap order, which meant nothing replayed and a force-quit before a save was a free re-roll — the player could simply retry any outcome he disliked. The match rules lived inside a widget as roughly seven hundred lines of reputation, bans, stress and trust, untested because there was no way to reach them. Fixing it meant stamping a format version on every save and migrating old ones forward, moving to seeded randomness so a career replays identically in a headless test, and lifting the rules out of the UI into services that can be tested on their own. The exit criterion was deliberately concrete: old save fixtures load through the pipeline, and a seeded career replays move for move.",
       features: [
-        "Offline-first capture with SQLite as the source of truth",
-        "Battery-aware background location batching",
-        "Vector map tiles cached for offline regions",
-        "Per-field conflict resolution on sync",
-        "GPX import and export",
+        "A week planner that is the game's only clock — every counter that moves names the cause that moved it",
+        "Matches resolved through four live moments: a tactical choice, two timing taps, and the settlement",
+        "Hidden player potential that is never shown as a number — coaches, scouts and agents give opinions that can be wrong, so trusting the wrong judge is a real risk",
+        "Versioned saves with forward migration, so careers started on older builds keep working",
+        "Seeded randomness that makes an entire career deterministic and replayable in tests",
       ],
     },
-  },
-  {
-    slug: "signal-board",
-    name: "Signal",
-    summary:
-      "A real-time team status board with live presence, optimistic updates and a moderation queue.",
-    kind: "web",
-    status: "live",
-    role: "Full Stack Developer",
-    timeline: "Completed",
-    tech: ["React", "Node.js", "WebSocket", "Redis", "PostgreSQL"],
-    featured: false,
-    cover: {
-      src: "/shots/signal-1.svg",
-      alt: "Signal board showing live status cards for a team",
-    },
-    shots: [],
-    caseStudy: {
-      overview:
-        "Signal shows what a distributed team is working on right now, updating live for everyone connected. It is a small product with a disproportionately interesting concurrency problem.",
-      challenges:
-        "Naive broadcast-on-write fell over once rooms grew past a few dozen people. I introduced a Redis pub/sub fan-out with per-room debouncing, and moved presence to a heartbeat with a grace period so a flaky connection no longer made someone flicker in and out of the room.",
-      features: [
-        "Redis pub/sub fan-out across multiple server instances",
-        "Presence heartbeats with reconnection grace periods",
-        "Optimistic updates that roll back cleanly on failure",
-        "Moderation queue with soft deletes",
-      ],
-    },
-  },
-  {
-    slug: "verse-translate",
-    name: "Verse",
-    summary:
-      "A cross-platform translator covering 100+ languages, with an offline phrasebook for the ones you need most.",
-    kind: "mobile",
-    status: "live",
-    role: "Solo Developer",
-    timeline: "Completed",
-    tech: ["React Native", "Expo", "REST API", "TypeScript"],
-    featured: false,
-    cover: {
-      src: "/shots/verse-1.svg",
-      alt: "Verse translator screen with source and target language panes",
-    },
-    shots: [],
-    totalScreens: 9,
-  },
-  {
-    slug: "northwind-studio",
-    name: "Northwind",
-    summary:
-      "A marketing site for a design studio — static, fast, and editable by the team without touching code.",
-    kind: "web",
-    status: "live",
-    role: "Front End Developer",
-    timeline: "Completed",
-    tech: ["Astro", "TypeScript", "Tailwind", "CMS"],
-    featured: false,
-    cover: {
-      src: "/shots/northwind-1.svg",
-      alt: "Northwind studio homepage with a large typographic hero",
-    },
-    shots: [],
   },
 ];
 

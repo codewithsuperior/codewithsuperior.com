@@ -20,6 +20,10 @@ const FILTERS: { value: Filter; label: string }[] = [
  * Featured projects render as full-bleed alternating rows, everything else as
  * a two-column grid. Filtering re-partitions both, so a filter that leaves no
  * featured work still produces a sensible layout rather than an empty band.
+ *
+ * The filter hides itself unless both platforms are actually represented. With
+ * only mobile work it would read "All 1 · Web 0 · Mobile 1" — three controls
+ * where two do nothing — so it reappears on its own once a web project lands.
  */
 export function ProjectGallery({
   projects,
@@ -55,7 +59,7 @@ export function ProjectGallery({
 
   return (
     <div>
-      {showFilter && (
+      {showFilter && counts.web > 0 && counts.mobile > 0 && (
         <div className="mt-14 flex justify-center">
           <div
             role="group"
