@@ -21,7 +21,6 @@ be rounded up by hand.
 
 Still outstanding:
 
-- `app/favicon.ico` — still the Create Next App default.
 - `public/shots/goat-*.jpg` — real key art from the game, but backdrops rather
   than in-game screenshots. Captures of the actual UI would be stronger.
 - `public/portrait.jpg` — a mirror selfie. It reads clearly, but a photo taken
