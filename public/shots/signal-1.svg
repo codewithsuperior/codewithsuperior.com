@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Signal placeholder screen">
+  <rect width="1280" height="800" fill="#ffffff"/>
+
+  <circle cx="80" cy="60" r="7" fill="#6528c4"/>
+  <text x="102" y="66" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" fill="#12121a">Signal</text>
+  <text x="520" y="66" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#12121a" opacity="0.45">Work</text><text x="616" y="66" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#12121a" opacity="0.45">About</text><text x="712" y="66" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#12121a" opacity="0.45">Pricing</text><text x="808" y="66" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#12121a" opacity="0.45">Contact</text>
+  <rect x="1064" y="44" width="136" height="36" rx="18" fill="#12121a"/>
+
+  <text x="80" y="188" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="2" fill="#6528c4">LIVE NOW</text>
+  <rect x="80" y="212" width="620" height="34" rx="8" fill="#12121a" opacity="0.85"/>
+  <rect x="80" y="262" width="470" height="34" rx="8" fill="#12121a" opacity="0.85"/>
+  <rect x="80" y="326" width="440" height="12" rx="6" fill="#12121a" opacity="0.25"/>
+  <rect x="80" y="352" width="360" height="12" rx="6" fill="#12121a" opacity="0.25"/>
+  <rect x="80" y="398" width="170" height="46" rx="23" fill="#6528c4"/>
+
+  <rect x="748" y="180" width="452" height="292" rx="24" fill="#6528c4" opacity="0.10"/>
+  <rect x="784" y="220" width="180" height="12" rx="6" fill="#12121a" opacity="0.3"/>
+  <rect x="784" y="252" width="380" height="184" rx="16" fill="#6528c4" opacity="0.28"/>
+
+  
+    <rect x="80" y="556" width="352" height="180" rx="20" fill="#12121a" opacity="0.045"/>
+    <rect x="112" y="0" width="0" height="0"/>
+    <circle cx="118" cy="596" r="16" fill="#6528c4" opacity="0.5"/>
+    <rect x="146" y="588" width="132" height="12" rx="6" fill="#12121a" opacity="0.45"/>
+    <rect x="112" y="638" width="288" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+    <rect x="112" y="662" width="240" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+    <rect x="464" y="556" width="352" height="180" rx="20" fill="#12121a" opacity="0.045"/>
+    <rect x="112" y="0" width="0" height="0"/>
+    <circle cx="502" cy="596" r="16" fill="#6528c4" opacity="0.5"/>
+    <rect x="530" y="588" width="116" height="12" rx="6" fill="#12121a" opacity="0.45"/>
+    <rect x="496" y="638" width="288" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+    <rect x="496" y="662" width="210" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+    <rect x="848" y="556" width="352" height="180" rx="20" fill="#12121a" opacity="0.045"/>
+    <rect x="112" y="0" width="0" height="0"/>
+    <circle cx="886" cy="596" r="16" fill="#6528c4" opacity="0.5"/>
+    <rect x="914" y="588" width="100" height="12" rx="6" fill="#12121a" opacity="0.45"/>
+    <rect x="880" y="638" width="288" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+    <rect x="880" y="662" width="180" height="10" rx="5" fill="#12121a" opacity="0.18"/>
+</svg>

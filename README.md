@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
-
-First, run the development server:
+A portfolio site for a web and mobile developer. Next.js App Router, TypeScript,
+Tailwind v4, MDX notes, and a typed content layer.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
+npm run build   # production build
+npm start       # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Before you publish
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Every piece of content in `content/` is a placeholder.** The site is fully
+functional as it stands, but it describes a person called "Your Name" who can be
+reached at `you@example.com`. Nothing here should go live until that is fixed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Work through these five files, in this order:
 
-## Learn More
+| File | What it drives |
+| --- | --- |
+| `content/profile.ts` | Name, title, hero headline, bio, email, phone, socials, stats, process, FAQ, **`siteUrl`** |
+| `content/projects.ts` | The project gallery and every case study page |
+| `content/experience.ts` | The experience timeline on `/about` |
+| `content/stack.ts` | The dark tech-stack band |
+| `content/notes.ts` + `content/notes/*.mdx` | The notes index and article pages |
 
-To learn more about Next.js, take a look at the following resources:
+Then replace the artwork:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `public/shots/*.svg` — project screenshots. Swap in real PNG/WebP files and
+  update the `cover` and `shots` paths in `content/projects.ts`.
+- `public/portrait.svg` — your photo, used on `/about`.
+- `app/favicon.ico`.
+- Delete `scripts/gen-placeholders.mjs` once the real artwork is in; it exists
+  only to generate the placeholders.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`siteUrl` in `content/profile.ts` is the one easy thing to forget. It sets the
+canonical URLs, the Open Graph tags, the sitemap and the JSON-LD, all of which
+will point at `example.com` until you change it.
 
-## Deploy on Vercel
+## How it is put together
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**The content layer is the contract.** Components never hardcode a name, a phone
+number or a project — they read from `content/`, typed against `lib/types.ts`.
+That means the page, the metadata, the sitemap and the structured data are all
+generated from the same source and cannot drift apart. Adding a project puts it
+in the gallery, gives it a case study route, adds it to the sitemap and adds it
+to the JSON-LD graph, with no other edits.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**The design lives in one file.** Six colour tokens at the top of
+`app/globals.css` define the entire palette, in both light and dark. Change them
+and the whole site re-skins. Fonts are set in `app/layout.tsx`.
+
+**Motion is progressive enhancement.** The hidden "before reveal" state is scoped
+to a `.js` class that an inline script adds before paint, so with JavaScript off
+or a bundle that fails to load, everything renders plainly visible instead of
+transparent. `prefers-reduced-motion` is handled once, in CSS.
+
+**The boot preloader is an overlay, not a gate.** It is capped at 1200 ms,
+dismisses as soon as the document and fonts are actually ready, runs once per
+session, and is skipped entirely under reduced motion. The page renders
+underneath it from the first byte.
+
+### Routes
+
+```
+/                      hero, filterable projects, tech stack, contact CTA
+/about                 bio, ethos, stats, experience timeline, process
+/projects              full project gallery
+/project/[slug]        case study        (static, from content/projects.ts)
+/notes                 notes index with category filter
+/notes/[slug]          MDX article       (static, from content/notes.ts)
+/contact               quick-contact cards, form, socials
+/sitemap.xml /robots.txt
+```
+
+Every route is prerendered to static HTML at build time.
+
+## Contact form
+
+Posts to a server action (`app/actions/send-message.ts`) backed by Resend, with
+Zod validation, a honeypot field and a per-IP rate limit — all server-side, so
+none of it can be edited by the sender.
+
+Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` to enable delivery.
+Without a key the action reports `unconfigured` and the form opens the visitor's
+mail client with their message prefilled, so it still works undeployed.
+
+The rate limiter holds state in module memory. It resets on redeploy and is
+per-instance — a speed bump, not a guarantee. Move it to Vercel KV or Upstash if
+you ever need it to hold across instances.
+
+## Deploying
+
+Push to a Git remote and import the repo on Vercel; the defaults are correct. Set
+`RESEND_API_KEY` (and `CONTACT_FROM` / `CONTACT_TO` if you are not using the
+defaults) in the project's environment variables.
+
+Security headers — CSP, HSTS, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy` — are set in `next.config.ts`. `script-src` allows
+`'unsafe-inline'` because Next inlines its hydration bootstrap; the strict
+alternative is per-request nonces via middleware, which would force every page to
+render dynamically.
+
+## Notes on the stack
+
+- `simple-icons` supplies the brand logos. `TechLogo` is a server component, so
+  the package never reaches the browser — only the resolved SVG path does. An
+  unknown slug renders a lettered tile instead of throwing.
+- The dark tech-stack band uses literal colours rather than theme tokens, on
+  purpose. Built from tokens it inverts to near-white in dark mode, where the
+  white logo tiles disappear — and tinting the tiles is not an option because
+  many of these marks are near-black. See the comment in `TechStack.tsx`.
+- `robots.ts` explicitly allows AI crawlers. Remove any agent from the list there
+  to opt out of it.

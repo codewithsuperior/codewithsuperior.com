@@ -1,0 +1,47 @@
+The fastest way to make a site painful to update is to spread its copy across
+forty components. You know the shape of it: the phone number is in the footer,
+the header, the contact page and the structured data, and when it changes you
+find three of the four.
+
+## The pattern
+
+Put every piece of content in one typed place, and let components read from it.
+
+```ts
+// content/profile.ts
+export const profile: Profile = {
+  name: "Your Name",
+  email: "you@example.com",
+  phone: "+10000000000",
+};
+```
+
+Now the footer, the contact page, the metadata and the JSON-LD all import the
+same value. Changing it is one edit, and TypeScript tells you immediately if you
+remove a field something still depends on.
+
+## Why typing it matters more than centralising it
+
+Centralising alone gets you a big untyped object and a new category of bug:
+misspelled keys that render `undefined` in production. Typing the content layer
+turns content mistakes into build failures.
+
+It also documents itself. A `Project` interface with a comment on each field is
+the only instruction manual the person editing the site needs — they never have
+to open a component to work out what `featured` does.
+
+## Where it pays off most
+
+Structured data. Hand-maintained JSON-LD drifts from the page it describes almost
+immediately, because nothing forces the two to agree. Generate it from the same
+content the page renders and the drift becomes impossible.
+
+The same goes for your sitemap. If it is a static file listing routes, it will be
+wrong within a month of adding a project. If it is generated from the array the
+project pages are built from, it cannot be.
+
+## The test
+
+Ask: to change my job title everywhere it appears, how many files do I open?
+
+If the answer is more than one, the content is in the wrong place.
