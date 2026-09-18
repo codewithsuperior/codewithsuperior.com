@@ -20,8 +20,8 @@ export function Footer() {
             {profile.shortName}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-muted">
-            {profile.title} building web and native experiences — from the
-            interface to the API behind it.
+            {profile.title} building mobile games and web products — from the
+            first idea to something that actually ships.
           </p>
         </div>
 

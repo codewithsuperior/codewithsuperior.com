@@ -4,6 +4,11 @@ import type { Profile } from "@/lib/types";
  * This one file drives the hero, the boot preloader wordmark, the footer,
  * /about, /contact, the page metadata, the sitemap and the JSON-LD. Change it
  * here and it changes everywhere.
+ *
+ * The stats are counts from the From Nobody: The GOAT repository and are meant
+ * to stay checkable. Re-read them from the project rather than rounding them up
+ * by hand: `git rev-list --count HEAD`, and the file and line counts under
+ * `lib/` and `test/`.
  * ------------------------------------------------------------------------- */
 
 export const profile: Profile = {
@@ -14,18 +19,18 @@ export const profile: Profile = {
 
   headline: ["Hi. I'm Superior.", "Web & Mobile."],
   intro:
-    "I design and build web and mobile products end to end — from the interface people touch to the API and database behind it.",
+    "I build mobile games and web products end to end — right now a football life sim in Flutter, and web work in Next.js and TypeScript.",
 
   ethos: {
     heading:
       "Let's talk if you care about shipping software people can actually rely on.",
-    body: "I'd rather build one thing that holds up under real traffic than five that demo well. If that's how you think about product too, I'd like to hear from you.",
+    body: "I'd rather build one thing that holds up in real use than five that demo well. If that's how you think about product too, I'd like to hear from you.",
   },
 
   bio: [
-    "I started out fixing other people's websites — small tickets, broken layouts, forms that silently dropped submissions. It was unglamorous, and it taught me more about how the web actually works than any tutorial did.",
-    "These days I work across the whole stack. On the front end that means React and TypeScript on the web, React Native and Expo on mobile. On the back end it means Node, REST APIs, and relational data modelling that survives contact with real users.",
-    "Away from the editor I'm usually cooking something ambitious, reading about systems design, or taking apart a product I admire to work out how it was put together.",
+    "I build mobile games and web products, and right now nearly all of that is From Nobody: The GOAT — a football life sim in Flutter that I have been building on my own since August 2026.",
+    "I am early in my coding life and direct about saying so. I work with AI tooling as leverage: I scope the thing, drive the tools, read what comes back, and throw out what does not hold up. What I bring is the judgement about what is worth building, the stubbornness to keep at it until it actually ships, and enough understanding to tell working code from merely convincing code.",
+    "That approach has to earn its keep, so I hold the work to the standard I would want from anyone. Saves carry a format version and migrate forward, so a career started on an older build keeps working. Randomness is seeded, so an entire career replays identically in a headless test and a force-quit is no longer a free re-roll. The game rules live in services that can be tested on their own rather than inside a widget.",
   ],
 
   email: "superior3009@gmail.com",
@@ -44,28 +49,28 @@ export const profile: Profile = {
   ],
 
   stats: [
-    { value: "5+", label: "Years building" },
-    { value: "3", label: "Roles held" },
-    { value: "40+", label: "Projects shipped" },
-    { value: "2", label: "Apps in stores" },
+    { value: "1", label: "Game in development" },
+    { value: "81K", label: "Lines shipped" },
+    { value: "169", label: "Test files" },
+    { value: "206", label: "Commits" },
   ],
 
   process: [
     {
-      title: "Prototype early",
-      body: "I get something clickable in a browser fast. A real link a team can poke at settles arguments that a static mockup only prolongs.",
+      title: "Get it playable early",
+      body: "Something you can actually open and use settles arguments that a description only prolongs. I would rather find out a mechanic is boring in week one than defend it for a month.",
     },
     {
-      title: "Build in the open",
-      body: "Short feedback loops, visible work in progress, decisions written down. Nobody should be surprised by what lands at the end of a sprint.",
+      title: "Write the decision down",
+      body: "Every phase of the game has a record saying what was built, where it diverged from the plan, and what was deliberately left alone. It costs an hour and saves the argument you would otherwise have with yourself later.",
     },
     {
-      title: "Make it fast",
-      body: "Performance is a requirement, not a feature. I watch bundle weight, keep the main thread free, and treat a slow page as a bug worth filing.",
+      title: "Test what would hurt to lose",
+      body: "Not everything needs a test, but the things a player would never forgive — a lost save, a result that should not have happened — need one. That is most of why the test files outnumber a lot of the source.",
     },
     {
-      title: "Leave it maintainable",
-      body: "Typed interfaces, small components, tests around the parts that would hurt to break. The next person to open the file should not need me to explain it.",
+      title: "Make it survive its own updates",
+      body: "Shipping once is easy. I care more that the version I release next month does not quietly break what someone built up over hours in the version before it.",
     },
   ],
 
@@ -73,17 +78,17 @@ export const profile: Profile = {
     {
       question: "What do you build?",
       answer:
-        "Full-stack web applications and cross-platform mobile apps — interface work in React and TypeScript, mobile in React Native and Expo, APIs in Node, and the relational data modelling behind both.",
+        "Mobile games and web products. Right now that means a football life sim in Flutter and Dart for Android, and web work in Next.js, React and TypeScript — this site included.",
+    },
+    {
+      question: "How do you work with AI tools?",
+      answer:
+        "Heavily, and openly. I use tools like Claude Code to move faster than my hand-coding experience alone would allow. What does not change is that I decide what gets built, review what comes back, and I am the one answerable for whether it works. The tooling is leverage, not a substitute for judgement.",
     },
     {
       question: "Are you available for work?",
       answer:
-        "Yes. I take freelance contracts and full-time roles, and I work remotely with teams in any timezone. Email or WhatsApp is the fastest way to start a conversation.",
-    },
-    {
-      question: "How do you charge for freelance projects?",
-      answer:
-        "Fixed price for well-scoped work, day rate for open-ended engagements. Either way you get a written scope before anything starts.",
+        "Yes. I am open to freelance projects and to roles, and I work remotely with teams in any timezone. Email or WhatsApp is the fastest way to start a conversation.",
     },
   ],
 

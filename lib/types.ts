@@ -47,25 +47,6 @@ export interface Project {
   };
 }
 
-export type EmploymentType =
-  "full-time" | "contract" | "on-call" | "internship";
-
-export interface ExperienceRole {
-  company: string;
-  title: string;
-  location: string;
-  type: EmploymentType;
-  /** ISO `YYYY-MM`. Duration is computed from these, so it never goes stale. */
-  start: string;
-  /** ISO `YYYY-MM`, or null for a role you currently hold. */
-  end: string | null;
-  summary: string;
-  highlights: string[];
-  /** Chips under "How I work" — the softer, non-tool skills. */
-  ways: string[];
-  tech: string[];
-}
-
 export interface StackGroup {
   title: string;
   items: { name: string; logo: string }[];

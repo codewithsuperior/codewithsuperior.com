@@ -1,6 +1,5 @@
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
-import { experience } from "@/content/experience";
 import { stack } from "@/content/stack";
 import type { Note, Project } from "@/lib/types";
 import { absolute, siteUrl } from "@/lib/seo";
@@ -50,9 +49,6 @@ const person = () => ({
   telephone: profile.phone,
   address: postalAddress(),
   sameAs: profile.socials.map((s) => s.href),
-  worksFor: experience
-    .filter((r) => r.end === null)
-    .map((r) => ({ "@type": "Organization", name: r.company })),
   knowsAbout: [
     ...new Set([
       profile.title,

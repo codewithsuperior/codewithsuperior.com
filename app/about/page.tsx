@@ -2,17 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { profile } from "@/content/profile";
-import { experience } from "@/content/experience";
 import { pageMetadata } from "@/lib/seo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCounter } from "@/components/about/StatCounter";
-import { ExperienceTimeline } from "@/components/about/ExperienceTimeline";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: `${profile.name} is a ${profile.title.toLowerCase()} based in ${profile.location}. Experience, approach and the story so far.`,
+  description: `${profile.name} is a ${profile.title.toLowerCase()} based in ${profile.location}. Approach, and the work so far.`,
   path: "/about",
   type: "profile",
 });
@@ -86,11 +84,11 @@ export default function AboutPage() {
       </section>
 
       <section
-        aria-labelledby="experience-heading"
+        aria-labelledby="numbers-heading"
         className="container-page mt-32 sm:mt-40"
       >
-        <SectionHeading id="experience-heading" align="left">
-          Experience
+        <SectionHeading id="numbers-heading" align="left">
+          By the numbers
         </SectionHeading>
 
         <dl className="mt-14 grid grid-cols-2 gap-10 lg:grid-cols-4">
@@ -103,8 +101,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </dl>
-
-        <ExperienceTimeline roles={experience} />
       </section>
 
       <section
