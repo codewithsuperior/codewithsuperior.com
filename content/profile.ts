@@ -1,11 +1,9 @@
 import type { Profile } from "@/lib/types";
 
 /* ---------------------------------------------------------------------------
- * REPLACE EVERYTHING IN THIS FILE BEFORE PUBLISHING.
- *
- * Every value below is a placeholder. This one file drives the hero, the
- * boot preloader wordmark, the footer, /about, /contact, the page metadata,
- * the sitemap and the JSON-LD. Change it here and it changes everywhere.
+ * This one file drives the hero, the boot preloader wordmark, the footer,
+ * /about, /contact, the page metadata, the sitemap and the JSON-LD. Change it
+ * here and it changes everywhere.
  * ------------------------------------------------------------------------- */
 
 export const profile: Profile = {
@@ -36,13 +34,12 @@ export const profile: Profile = {
   available: true,
 
   socials: [
-    { label: "GitHub", href: "https://github.com/yourhandle", icon: "github" },
     {
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/yourhandle",
-      icon: "linkedin",
+      label: "GitHub",
+      href: "https://github.com/codewithsuperior",
+      icon: "github",
     },
-    { label: "X", href: "https://x.com/yourhandle", icon: "x" },
+    { label: "X", href: "https://x.com/codewithsuperior", icon: "x" },
     { label: "WhatsApp", href: "https://wa.me/2348131886018", icon: "whatsapp" },
   ],
 
@@ -90,5 +87,8 @@ export const profile: Profile = {
     },
   ],
 
-  siteUrl: "https://example.com",
+  // TODO: unverified. Vercel derives this from the repo name; confirm the real
+  // URL after the first deploy, or switch to https://codewithsuperior.com once
+  // the custom domain is pointed at Vercel.
+  siteUrl: "https://codewithsuperior-com.vercel.app",
 };
