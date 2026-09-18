@@ -9,11 +9,10 @@ import { ThemeToggle } from "./ThemeToggle";
 const LINKS = [
   { href: "/", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/notes", label: "Notes" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-/** `/notes/some-post` should still light up "Notes". */
+/** `/project/some-slug` should still light up "Work". */
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/" || pathname.startsWith("/project");
   return pathname === href || pathname.startsWith(href + "/");

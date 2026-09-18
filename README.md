@@ -1,7 +1,7 @@
 # Portfolio
 
 A portfolio site for a web and mobile developer. Next.js App Router, TypeScript,
-Tailwind v4, MDX notes, and a typed content layer.
+Tailwind v4, and a typed content layer.
 
 ```bash
 npm run dev     # http://localhost:3000
@@ -9,34 +9,31 @@ npm run build   # production build
 npm start       # serve the production build
 ```
 
-## Before you publish
+## Status
 
-**Every piece of content in `content/` is a placeholder.** The site is fully
-functional as it stands, but it describes a person called "Your Name" who can be
-reached at `you@example.com`. Nothing here should go live until that is fixed.
+The site is live at <https://codewithsuperior-com.vercel.app> and deploys on
+every push to `main`.
 
-Work through these five files, in this order:
+The content in `content/` is real. It describes one project — *From Nobody: The
+GOAT*, a Flutter football life sim — and the stats on `/about` are counts taken
+from that project's repository, so they are meant to stay checkable rather than
+be rounded up by hand.
 
-| File | What it drives |
-| --- | --- |
-| `content/profile.ts` | Name, title, hero headline, bio, email, phone, socials, stats, process, FAQ, **`siteUrl`** |
-| `content/projects.ts` | The project gallery and every case study page |
-| `content/experience.ts` | The experience timeline on `/about` |
-| `content/stack.ts` | The dark tech-stack band |
-| `content/notes.ts` + `content/notes/*.mdx` | The notes index and article pages |
+Still outstanding:
 
-Then replace the artwork:
+- `public/portrait.svg` — a generated placeholder, not a photo.
+- `app/favicon.ico` — still the Create Next App default.
+- `public/shots/goat-*.jpg` — real key art from the game, but backdrops rather
+  than in-game screenshots. Captures of the actual UI would be stronger.
+- `codewithsuperior.com` — registered on the Vercel project but not registered
+  as a domain, so it does not resolve. `siteUrl` in `content/profile.ts` points
+  at the `vercel.app` hostname until it does.
+- `scripts/gen-placeholders.mjs` — only generates placeholder artwork. Delete it
+  once the portrait is replaced.
 
-- `public/shots/*.svg` — project screenshots. Swap in real PNG/WebP files and
-  update the `cover` and `shots` paths in `content/projects.ts`.
-- `public/portrait.svg` — your photo, used on `/about`.
-- `app/favicon.ico`.
-- Delete `scripts/gen-placeholders.mjs` once the real artwork is in; it exists
-  only to generate the placeholders.
-
-`siteUrl` in `content/profile.ts` is the one easy thing to forget. It sets the
-canonical URLs, the Open Graph tags, the sitemap and the JSON-LD, all of which
-will point at `example.com` until you change it.
+`siteUrl` in `content/profile.ts` sets the canonical URLs, the Open Graph tags,
+the sitemap and the JSON-LD together. It is the one value worth checking after
+any change of domain.
 
 ## How it is put together
 
@@ -68,8 +65,6 @@ underneath it from the first byte.
 /about                 bio, ethos, stats, experience timeline, process
 /projects              full project gallery
 /project/[slug]        case study        (static, from content/projects.ts)
-/notes                 notes index with category filter
-/notes/[slug]          MDX article       (static, from content/notes.ts)
 /contact               quick-contact cards, form, socials
 /sitemap.xml /robots.txt
 ```

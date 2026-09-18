@@ -1,7 +1,7 @@
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { stack } from "@/content/stack";
-import type { Note, Project } from "@/lib/types";
+import type { Project } from "@/lib/types";
 import { absolute, siteUrl } from "@/lib/seo";
 
 /**
@@ -130,33 +130,6 @@ export function projectGraph(project: Project) {
         { name: "Home", path: "/" },
         { name: "Projects", path: "/projects" },
         { name: project.name, path: `/project/${project.slug}` },
-      ]),
-    ],
-  };
-}
-
-export function noteGraph(note: Note) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        "@id": absolute(`/notes/${note.slug}`) + "#post",
-        headline: note.title,
-        description: note.excerpt,
-        datePublished: note.date,
-        dateModified: note.date,
-        articleSection: note.category,
-        url: absolute(`/notes/${note.slug}`),
-        author: { "@id": ID.person },
-        publisher: { "@id": ID.person },
-        isPartOf: { "@id": ID.website },
-        mainEntityOfPage: absolute(`/notes/${note.slug}`),
-      },
-      breadcrumb([
-        { name: "Home", path: "/" },
-        { name: "Notes", path: "/notes" },
-        { name: note.title, path: `/notes/${note.slug}` },
       ]),
     ],
   };

@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -27,8 +26,6 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["ts", "tsx", "mdx"],
-
   images: {
     // The placeholder artwork ships as SVG. next/image refuses SVG unless
     // explicitly allowed, since a hostile SVG can carry script — these are
@@ -63,6 +60,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX({});
-
-export default withMDX(nextConfig);
+export default nextConfig;

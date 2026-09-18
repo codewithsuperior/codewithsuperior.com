@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/content/projects";
-import { notes } from "@/content/notes";
 import { absolute } from "@/lib/seo";
 
 /**
- * Generated from the content layer, so adding a project or a note puts it in
- * the sitemap automatically. A hand-written sitemap is wrong within a month.
+ * Generated from the content layer, so adding a project puts it in the sitemap
+ * automatically. A hand-written sitemap is wrong within a month.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -30,12 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: absolute("/notes"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: absolute("/contact"),
       lastModified: now,
       changeFrequency: "monthly",
@@ -52,14 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
-  const noteRoutes: MetadataRoute.Sitemap = notes
-    .filter((n) => !n.draft)
-    .map((n) => ({
-      url: absolute(`/notes/${n.slug}`),
-      lastModified: new Date(n.date),
-      changeFrequency: "yearly",
-      priority: 0.6,
-    }));
-
-  return [...staticRoutes, ...projectRoutes, ...noteRoutes];
+  return [...staticRoutes, ...projectRoutes];
 }

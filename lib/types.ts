@@ -52,20 +52,6 @@ export interface StackGroup {
   items: { name: string; logo: string }[];
 }
 
-export type NoteCategory = string;
-
-export interface Note {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: NoteCategory;
-  /** ISO `YYYY-MM-DD`. */
-  date: string;
-  /** Loads the MDX body. Kept beside the metadata so one entry describes one note. */
-  body: () => Promise<{ default: React.ComponentType }>;
-  draft?: boolean;
-}
-
 export interface SocialLink {
   label: string;
   href: string;

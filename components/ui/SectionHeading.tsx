@@ -7,7 +7,7 @@ import { Reveal } from "./Reveal";
  * here rather than typed into each call site.
  *
  * `as` exists because the same visual treatment is a page title on /projects
- * and /notes but a section title on the home page. Every page needs exactly
+ * and /projects but a section title on the home page. Every page needs exactly
  * one h1, and heading level is a document-structure decision, not a styling
  * one — so the call site states it rather than inheriting whatever looks right.
  */
