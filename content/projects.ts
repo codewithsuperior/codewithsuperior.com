@@ -27,21 +27,21 @@ export const projects: Project[] = [
     ],
     featured: true,
     cover: {
-      src: "/shots/goat-hero.jpg",
-      alt: "From Nobody: The GOAT key art — a footballer lit from behind under stadium floodlights",
+      src: "/shots/goat-menu.jpg",
+      alt: "The game's main menu over stadium key art, offering a new game, a saved career, settings and a how-to-play guide",
     },
     shots: [
       {
-        src: "/shots/goat-street.jpg",
-        alt: "Street football backdrop, where a career begins before any club has signed the player",
+        src: "/shots/goat-planner.jpg",
+        alt: "The week planner: seven days from Monday to Sunday, with school already locked into three of them at an energy cost, above mood, public image and energy meters",
       },
       {
-        src: "/shots/goat-academy.jpg",
-        alt: "Academy backdrop, used for the youth stage of a player's rise",
+        src: "/shots/goat-career.jpg",
+        alt: "The career home screen in week one — a free week with no fixture, and a player card reading sixteen years old, playmaker, overall 42, not with a club",
       },
       {
-        src: "/shots/goat-world-cup.jpg",
-        alt: "World cup backdrop, the final stage of the reputation ladder",
+        src: "/shots/goat-background.jpg",
+        alt: "Choosing a background at character creation, where each option sets both starting money and how many people depend on the player",
       },
     ],
     caseStudy: {

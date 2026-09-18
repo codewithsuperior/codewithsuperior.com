@@ -21,8 +21,6 @@ be rounded up by hand.
 
 Still outstanding:
 
-- `public/shots/goat-*.jpg` — real key art from the game, but backdrops rather
-  than in-game screenshots. Captures of the actual UI would be stronger.
 - `codewithsuperior.com` — registered on the Vercel project but not registered
   as a domain, so it does not resolve. `siteUrl` in `content/profile.ts` points
   at the `vercel.app` hostname until it does.
