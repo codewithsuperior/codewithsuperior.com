@@ -27,12 +27,6 @@ const csp = [
 
 const nextConfig: NextConfig = {
   images: {
-    // The placeholder artwork ships as SVG. next/image refuses SVG unless
-    // explicitly allowed, since a hostile SVG can carry script — these are
-    // first-party files, and the sandbox below neutralises the risk anyway.
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ["image/avif", "image/webp"],
   },
 

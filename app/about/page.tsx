@@ -29,7 +29,7 @@ export default function AboutPage() {
           <Reveal as="figure">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] rounded-tl-[8rem] bg-surface">
               <Image
-                src="/portrait.svg"
+                src="/portrait.jpg"
                 alt={`${profile.name}, ${profile.title}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 352px"

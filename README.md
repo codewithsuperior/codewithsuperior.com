@@ -21,15 +21,14 @@ be rounded up by hand.
 
 Still outstanding:
 
-- `public/portrait.svg` — a generated placeholder, not a photo.
 - `app/favicon.ico` — still the Create Next App default.
 - `public/shots/goat-*.jpg` — real key art from the game, but backdrops rather
   than in-game screenshots. Captures of the actual UI would be stronger.
+- `public/portrait.jpg` — a mirror selfie. It reads clearly, but a photo taken
+  by someone else, without a phone in frame, would suit the page better.
 - `codewithsuperior.com` — registered on the Vercel project but not registered
   as a domain, so it does not resolve. `siteUrl` in `content/profile.ts` points
   at the `vercel.app` hostname until it does.
-- `scripts/gen-placeholders.mjs` — only generates placeholder artwork. Delete it
-  once the portrait is replaced.
 
 `siteUrl` in `content/profile.ts` sets the canonical URLs, the Open Graph tags,
 the sitemap and the JSON-LD together. It is the one value worth checking after
