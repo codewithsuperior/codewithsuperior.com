@@ -87,8 +87,8 @@ export const profile: Profile = {
     },
   ],
 
-  // TODO: unverified. Vercel derives this from the repo name; confirm the real
-  // URL after the first deploy, or switch to https://codewithsuperior.com once
-  // the custom domain is pointed at Vercel.
+  // Switch to https://codewithsuperior.com once that domain resolves — it is
+  // already registered on the Vercel project but its DNS is not yet pointed
+  // there, so the vercel.app hostname is the only one that actually serves.
   siteUrl: "https://codewithsuperior-com.vercel.app",
 };
